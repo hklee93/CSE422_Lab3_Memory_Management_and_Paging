@@ -8,7 +8,7 @@ This lab investigates the tradeoff between making memory allocation fast and ens
 4. Study the performance differences between two different configurations, focusing on how they affect the system call execution time for the *mmap*() call, and the runtime of a matrix multiplication application that uses the memory we map for it. 
 
 # # Module Design
-#### The implementation of the following functions can be found in [paging.c](https://github.com/hklee93/ PLEASE EDIT HERE)
+#### The implementation of the following functions can be found in [paging.c](https://github.com/HKLee93/CSE422_Lab3_Memory_Management_and_Paging/blob/master/paging.c)
  - *paging_vma_fault*(*struct vm_area_struct** *vma*, *struct vm_fault** *vmf*) - This is our page fault handler function.
  - *paging_vma_close*(*struct vm_area_struct** *vma*) - This is our close callback function.
  - *remap_pfn_range* arguments calculation: The second argument, a target user address to start a, is calculated by rounding to the nearest 4KB using PAGE_ALIGN function. The thrid argument, a physical address of the kernel memory, is calculated by allocating page first and converting allocated page to page frame number.
@@ -36,7 +36,7 @@ Although it is not visible in the graph, demand paging takes slightly longer tim
 the arrays that are needed for matrix multiplication and accesses all of the indices as it computes the multiples. Since demand paging module accesses all the allocated memory during the runtime of the program, the amount of page mapping needed for the program equals the number of pages. This takes approximately the same time as pre-mapping in the beginning via pre-paging module. Therefore, it takes approximately the same amount of time for handling page fault asynchronously and computing multiplication, and for pre-mapping and computing multiplication. However, we do see that for larger matrices, pre-paging performs better.
 
 ### Additional Work:
-To see how each paging method performs when not all allocated memory is accessed, we implemented a trace_mm program that supposedly computes the sum of diagonal entries of a matrix. The code can be found under [/user/trace_mm.c](https://github.com/hklee93/ PLEASE EDIT HERE).
+To see how each paging method performs when not all allocated memory is accessed, we implemented a trace_mm program that supposedly computes the sum of diagonal entries of a matrix. The code can be found in [trace_mm.c](https://github.com/HKLee93/CSE422_Lab3_Memory_Management_and_Paging/blob/master/trace_mm.c).
 
 ##### * Memory allocation time vs. Matrix size graph (in log scale):
 ![](alloc_size2.png)  
